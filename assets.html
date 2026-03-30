@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Klaimify LMS - Kinetic Command Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@700;800&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "background": "#F2F4F7",
+              "surface-container-highest": "#D0D5DD",
+              "outline": "#475467",
+              "primary-fixed-dim": "#0056D2",
+              "tertiary-fixed-dim": "#A93802",
+              "on-secondary": "#FFFFFF",
+              "primary-container": "#0056D2",
+              "tertiary-fixed": "#F2F4F7",
+              "tertiary-container": "#A93802",
+              "on-tertiary-container": "#FFFFFF",
+              "secondary": "#475467",
+              "surface": "#F2F4F7",
+              "surface-container-lowest": "#FFFFFF",
+              "outline-variant": "#EAECF0",
+              "surface-dim": "#F2F4F7",
+              "secondary-fixed": "#D0D5DD",
+              "surface-container-low": "#FFFFFF",
+              "on-error-container": "#B42318",
+              "secondary-fixed-dim": "#475467",
+              "on-secondary-container": "#101828",
+              "on-surface": "#101828",
+              "surface-variant": "#F9FAFB",
+              "on-error": "#FFFFFF",
+              "on-primary": "#FFFFFF",
+              "surface-container-high": "#F9FAFB",
+              "on-secondary-fixed": "#101828",
+              "on-background": "#101828",
+              "surface-container": "#FFFFFF",
+              "surface-bright": "#FFFFFF",
+              "primary-fixed": "#0056D2",
+              "error-container": "#FEE4E2",
+              "inverse-surface": "#101828",
+              "inverse-on-surface": "#F2F4F7",
+              "on-surface-variant": "#344054",
+              "on-secondary-fixed-variant": "#475467",
+              "on-primary-fixed-variant": "#0056D2",
+              "on-tertiary-fixed": "#A93802",
+              "primary": "#0056D2",
+              "on-tertiary-fixed-variant": "#A93802",
+              "secondary-container": "#F2F4F7",
+              "on-tertiary": "#FFFFFF",
+              "on-primary-container": "#FFFFFF",
+              "tertiary": "#A93802",
+              "inverse-primary": "#0056D2",
+              "on-primary-fixed": "#FFFFFF",
+              "surface-tint": "#0056D2",
+              "error": "#D92D20"
+            },
+            fontFamily: {
+              "headline": ["Manrope"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      body {
+        background-color: #F2F4F7;
+        color: #101828;
+        font-family: 'Inter', sans-serif;
+      }
+      .glass-card {
+        background: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(20px);
+        border: 1px solid #EAECF0;
+      }
+      .orange-glow {
+        box-shadow: 0 0 40px rgba(0, 86, 210, 0.05);
+      }
+      /* Maintain UI consistency for light theme */
+      aside { background-color: #FFFFFF !important; border-right: 1px solid #EAECF0; }
+      header { background-color: #FFFFFF !important; border-bottom: 1px solid #EAECF0 !important; }
+      .text-\[\#e5e2e1\] { color: #101828 !important; }
+      .bg-\[\#0e0e0e\] { background-color: #FFFFFF !important; }
+      .bg-\[\#131313\] { background-color: #F2F4F7 !important; }
+    </style>
+</head>
+<body class="flex min-h-screen">
+<aside class="hidden md:flex flex-col h-screen w-64 left-0 top-0 fixed bg-[#0e0e0e] z-50 py-8 shadow-[40px_0_40px_rgba(0,0,0,0.02)]">
+<div class="px-6 mb-10">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 bg-primary-container rounded flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary-container" style="font-variation-settings: 'FILL' 1;">local_shipping</span>
+</div>
+<div>
+<h1 class="text-[#e5e2e1] font-['Manrope'] font-bold text-lg leading-none">Kinetic Command</h1>
+<p class="font-['Inter'] text-[10px] font-medium uppercase tracking-widest text-[#e5e2e1] opacity-50 mt-1">Fleet Operations</p>
+</div>
+</div>
+</div>
+<nav class="flex-1">
+<ul class="space-y-1">
+<li>
+<a class="flex items-center gap-4 text-[#e5e2e1] opacity-50 pl-5 py-3 font-['Inter'] text-xs font-medium uppercase tracking-widest hover:opacity-100 hover:text-[#0056D2] transition-all duration-200 active:translate-x-1" href="dash.html">
+<span class="material-symbols-outlined">dashboard</span>
+<span>Dashboard</span>
+</a>
+</li>
+<li>
+<a class="flex items-center border-l-4 border-primary-container text-on-surface bg-gradient-to-r from-[#0056D21a] to-transparent pl-4 py-3 font-label text-xs font-medium uppercase tracking-widest" href="#">
+<span class="material-symbols-outlined mr-4 text-primary-container" style="font-variation-settings: 'FILL' 1;">local_shipping</span>
+                    Assets
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-4 text-[#e5e2e1] opacity-50 pl-5 py-3 font-['Inter'] text-xs font-medium uppercase tracking-widest hover:opacity-100 hover:text-[#0056D2] transition-all duration-200 active:translate-x-1" href="trips.html">
+<span class="material-symbols-outlined">route</span>
+<span>Trips</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-4 text-[#e5e2e1] opacity-50 pl-5 py-3 font-['Inter'] text-xs font-medium uppercase tracking-widest hover:opacity-100 hover:text-[#0056D2] transition-all duration-200 active:translate-x-1" href="driver.html">
+<span class="material-symbols-outlined">person</span>
+<span>Drivers</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-4 text-[#e5e2e1] opacity-50 pl-5 py-3 font-['Inter'] text-xs font-medium uppercase tracking-widest hover:opacity-100 hover:text-[#0056D2] transition-all duration-200 active:translate-x-1" href="invent.html">
+<span class="material-symbols-outlined">inventory_2</span>
+<span>Inventory</span>
+</a>
+</li>
+</ul>
+</nav>
+<div class="px-6 mt-auto">
+<ul class="space-y-1 border-t border-outline-variant/10 pt-6">
+<li>
+<a class="flex items-center gap-4 text-[#e5e2e1] opacity-50 pl-5 py-3 font-['Inter'] text-xs font-medium uppercase tracking-widest hover:opacity-100 hover:text-[#0056D2] transition-all duration-200" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span>Reports</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-4 text-[#e5e2e1] opacity-50 pl-5 py-3 font-['Inter'] text-xs font-medium uppercase tracking-widest hover:opacity-100 hover:text-[#D92D20] transition-all duration-200" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span>Logout</span>
+</a>
+</li>
+</ul>
+</div>
+</aside>
+
+<main class="flex-1 md:ml-64 min-h-screen bg-surface flex flex-col">
+<header class="flex justify-between items-center w-full px-6 py-3 sticky top-0 z-40 bg-[#131313] border-b border-[#1c1b1b]">
+<div class="flex items-center gap-8">
+<span class="text-xl font-black text-[#e5e2e1] tracking-tighter font-['Manrope'] uppercase">Klaimify LMS</span>
+<div class="hidden lg:flex items-center bg-surface-container-low px-4 py-2 rounded-md border border-outline-variant/10 min-w-[320px]">
+<span class="material-symbols-outlined text-on-surface/40 text-sm">search</span>
+<input class="bg-transparent border-none text-xs focus:ring-0 text-on-surface w-full placeholder:text-on-surface/30" placeholder="Search assets, trips or drivers..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+
+<div class="flex items-center gap-2 border-l border-outline-variant/20 pl-4">
+<button class="p-2 text-[#e5e2e1] opacity-70 hover:bg-[#D0D5DD] rounded transition-colors duration-200 relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-[#0056D2] rounded-full border-2 border-white"></span>
+</button>
+<button class="p-2 text-[#e5e2e1] opacity-70 hover:bg-[#D0D5DD] rounded transition-colors duration-200">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<div class="ml-2 flex items-center gap-3 cursor-pointer group">
+<img alt="Fleet Manager Profile" class="w-8 h-8 rounded-full border border-primary-container/30 group-hover:border-primary-container transition-colors" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCIbAEcctB-_mIgH39qOfGVgsdzH4Oa8hdsl5XSWXibhDz-5CjZ4CKg87VQoo699ZHJzQUfECLtSgJG_wrRy-R-AsWkSFplC65a92tAK-LB0CdG3oMPO-fWyWEMpwe-QDLwX1vjGkDXeOaWld6ZgE2q1lGiYvsOJohoTe0oOoVM4ZuzEgePDxzD44LXKkGLS8nIgu59hsOIcB-zVFWXfCTmZusCsmMy61d8ZGd_1waB1Cz3_porsC2ceTWKEGAjU9miXoqQFBvW6PQI"/>
+</div>
+</div>
+</div>
+</header>
+<div class="p-8 space-y-8 flex-1">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div>
+<h2 class="text-4xl font-headline font-extrabold text-on-surface tracking-tight">Asset Management</h2>
+<p class="text-on-surface/50 font-body text-sm mt-1">Real-time status tracking for 124 heavy-duty fleet assets</p>
+</div>
+<div class="flex items-center gap-3">
+<div class="flex bg-surface-container-high p-1 rounded-md">
+<button class="px-4 py-1.5 bg-surface-container-highest text-primary rounded shadow-sm text-xs font-bold uppercase tracking-wider">All Assets</button>
+<button class="px-4 py-1.5 text-on-surface/50 hover:text-on-surface transition-colors text-xs font-bold uppercase tracking-wider">On Road</button>
+<button class="px-4 py-1.5 text-on-surface/50 hover:text-on-surface transition-colors text-xs font-bold uppercase tracking-wider">Maintenance</button>
+</div>
+<a href="addveshical.html" class="inline-block">
+    <button class="bg-primary-container text-on-primary px-5 py-2.5 rounded font-headline font-bold text-sm flex items-center gap-2 hover:shadow-[0_0_20px_rgba(0,86,210,0.2)] transition-all">
+        <span class="material-symbols-outlined text-lg">add_circle</span>
+        Add Vehicle
+    </button>
+</a>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+<div class="bg-surface-container p-6 rounded-xl border-t-2 border-primary-container relative overflow-hidden">
+<div class="absolute -right-4 -top-4 opacity-5">
+<span class="material-symbols-outlined text-8xl">local_shipping</span>
+</div>
+<p class="text-on-surface/40 font-label text-[10px] font-bold uppercase tracking-widest">Total Fleet</p>
+<h3 class="text-3xl font-headline font-extrabold text-on-surface mt-1">124</h3>
+<div class="flex items-center gap-2 mt-4 text-xs font-medium text-tertiary-container">
+<span class="material-symbols-outlined text-sm">trending_up</span>
+<span>+4 this month</span>
+</div>
+</div>
+<div class="bg-surface-container p-6 rounded-xl relative overflow-hidden">
+<p class="text-on-surface/40 font-label text-[10px] font-bold uppercase tracking-widest">In Maintenance</p>
+<h3 class="text-3xl font-headline font-extrabold text-on-surface mt-1">08</h3>
+<div class="flex items-center gap-2 mt-4 text-xs font-medium text-primary-container">
+<span class="material-symbols-outlined text-sm">warning</span>
+<span>3 critical repairs</span>
+</div>
+</div>
+<div class="bg-surface-container p-6 rounded-xl relative overflow-hidden">
+<p class="text-on-surface/40 font-label text-[10px] font-bold uppercase tracking-widest">Doc Expiring</p>
+<h3 class="text-3xl font-headline font-extrabold text-primary-container mt-1">12</h3>
+<div class="flex items-center gap-2 mt-4 text-xs font-medium text-on-surface/40">
+<span class="material-symbols-outlined text-sm">event</span>
+<span>Next 7 days</span>
+</div>
+</div>
+<div class="bg-surface-container p-6 rounded-xl relative overflow-hidden">
+<p class="text-on-surface/40 font-label text-[10px] font-bold uppercase tracking-widest">Avg Efficiency</p>
+<h3 class="text-3xl font-headline font-extrabold text-on-surface mt-1">94%</h3>
+<div class="flex items-center gap-2 mt-4 text-xs font-medium text-tertiary-container">
+<span class="material-symbols-outlined text-sm">bolt</span>
+<span>Optimized flow</span>
+</div>
+</div>
+</div>
+
+<div class="p-6 space-y-6">
+<div class="bg-surface-container-low rounded-2xl overflow-hidden shadow-2xl">
+<div class="p-6 flex flex-wrap items-center justify-between gap-4 bg-surface-container">
+<div class="flex items-center gap-4">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface/40 text-sm">filter_list</span>
+<select class="bg-surface-container-high border-none rounded pl-10 pr-8 py-2 text-xs font-bold uppercase tracking-wider text-on-surface appearance-none focus:ring-1 focus:ring-primary-container">
+<option>Vehicle Type</option>
+<option>HCV (Heavy)</option>
+<option>LCV (Light)</option>
+</select>
+</div>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface/40 text-sm">calendar_today</span>
+<select class="bg-surface-container-high border-none rounded pl-10 pr-8 py-2 text-xs font-bold uppercase tracking-wider text-on-surface appearance-none focus:ring-1 focus:ring-primary-container">
+<option>Sort By Renewal</option>
+<option>Fitness (Soonest)</option>
+<option>Insurance (Soonest)</option>
+</select>
+</div>
+</div>
+<div class="flex items-center gap-2 text-on-surface/40 text-xs font-medium">
+<span>Showing 1-10 of 124 Vehicles</span>
+<div class="flex gap-1 ml-2">
+<button class="w-8 h-8 flex items-center justify-center bg-surface-container-highest text-on-surface rounded hover:text-primary-container transition-colors"><span class="material-symbols-outlined text-sm">chevron_left</span></button>
+<button class="w-8 h-8 flex items-center justify-center bg-surface-container-highest text-on-surface rounded hover:text-primary-container transition-colors"><span class="material-symbols-outlined text-sm">chevron_right</span></button>
+</div>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-lowest/50 text-on-surface/40 text-[10px] font-bold uppercase tracking-[0.2em]">
+<th class="px-8 py-4">Vehicle Details</th>
+<th class="px-6 py-4">Specs & Capacity</th>
+<th class="px-6 py-4">Current Status</th>
+<th class="px-6 py-4 text-center">Compliance Documents (RC/INS/PUC)</th>
+<th class="px-8 py-4 text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/5">
+<tr class="hover:bg-surface-container-highest/30 transition-colors group">
+<td class="px-8 py-5">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-surface-container rounded-lg flex items-center justify-center border border-outline-variant/10">
+<span class="material-symbols-outlined text-on-surface/60">door_front</span>
+</div>
+<div>
+<p class="text-on-surface font-headline font-bold text-sm tracking-tight">MH 12 QW 4590</p>
+<p class="text-on-surface/40 text-[10px] uppercase font-label">Tata Prima 4028.S</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-5">
+<div class="space-y-1">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-sm text-tertiary-container">weight</span>
+<span class="text-xs font-medium">40,000 KG</span>
+</div>
+<p class="text-[10px] text-on-surface/40 font-label uppercase">12 Wheeler • Trailer</p>
+</div>
+</td>
+<td class="px-6 py-5">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-tertiary-container/10 text-tertiary-container">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary-container mr-2"></span>
+                                        In Transit
+                                    </span>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center justify-center gap-3">
+    <div class="flex items-center gap-1.5 px-3 py-1 rounded-full bg-tertiary-container/10 text-tertiary-container font-bold text-xs border border-tertiary-container/20">
+        <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">error</span>
+        2/5
+    </div>
+    <button class="flex items-center gap-1 bg-tertiary-container text-white px-2 py-1 rounded text-[9px] font-bold uppercase tracking-tighter hover:opacity-90 transition-opacity shadow-sm">
+        <span class="material-symbols-outlined text-[10px]">upload</span>
+        Renew
+    </button>
+</div>
+</td>
+<td class="px-8 py-5 text-right">
+<div class="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+    <button class="p-2 hover:bg-surface-container-high rounded text-on-surface/60 hover:text-primary-container">
+        <span class="material-symbols-outlined text-lg">edit</span>
+    </button>
+    <button class="p-2 hover:bg-surface-container-high rounded text-on-surface/60 hover:text-tertiary-container">
+        <span class="material-symbols-outlined text-lg">visibility</span>
+    </button>
+    <button class="p-2 hover:bg-surface-container-high rounded text-on-surface/60 hover:text-error transition-colors">
+        <span class="material-symbols-outlined text-lg">delete</span>
+    </button>
+</div>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-highest/30 transition-colors group">
+<td class="px-8 py-5">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-surface-container rounded-lg flex items-center justify-center border border-outline-variant/10">
+<span class="material-symbols-outlined text-on-surface/60">door_front</span>
+</div>
+<div>
+<p class="text-on-surface font-headline font-bold text-sm tracking-tight">KA 01 ER 8821</p>
+<p class="text-on-surface/40 text-[10px] uppercase font-label">BharatBenz 3523R</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-5">
+<div class="space-y-1">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-sm text-tertiary-container">weight</span>
+<span class="text-xs font-medium">35,000 KG</span>
+</div>
+<p class="text-[10px] text-on-surface/40 font-label uppercase">10 Wheeler • Rigid</p>
+</div>
+</td>
+<td class="px-6 py-5">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-primary-container/10 text-primary-container">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container mr-2"></span>
+                                        Maintenance
+                                    </span>
+</td>
+<td class="px-6 py-5">
+<div class="flex justify-center items-center">
+<div class="flex items-center gap-2 px-3 py-1 rounded-full bg-green-500/10 text-green-600 font-bold text-xs">
+    <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+    5/5
+</div>
+</div>
+</td>
+<td class="px-8 py-5 text-right">
+<div class="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+    <button class="p-2 hover:bg-surface-container-high rounded text-on-surface/60 hover:text-primary-container">
+        <span class="material-symbols-outlined text-lg">edit</span>
+    </button>
+    <button class="p-2 hover:bg-surface-container-high rounded text-on-surface/60 hover:text-tertiary-container">
+        <span class="material-symbols-outlined text-lg">visibility</span>
+    </button>
+    <button class="p-2 hover:bg-surface-container-high rounded text-on-surface/60 hover:text-error transition-colors">
+        <span class="material-symbols-outlined text-lg">delete</span>
+    </button>
+</div>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-highest/30 transition-colors group">
+<td class="px-8 py-5">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-surface-container rounded-lg flex items-center justify-center border border-outline-variant/10">
+<span class="material-symbols-outlined text-on-surface/60">door_front</span>
+</div>
+<div>
+<p class="text-on-surface font-headline font-bold text-sm tracking-tight">DL 01 AA 9002</p>
+<p class="text-on-surface/40 text-[10px] uppercase font-label">Ashok Leyland 2820</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-5">
+<div class="space-y-1">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-sm text-tertiary-container">weight</span>
+<span class="text-xs font-medium">28,000 KG</span>
+</div>
+<p class="text-[10px] text-on-surface/40 font-label uppercase">10 Wheeler • Tipper</p>
+</div>
+</td>
+<td class="px-6 py-5">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-on-surface/10 text-on-surface/60">
+<span class="w-1.5 h-1.5 rounded-full bg-on-surface/40 mr-2"></span>
+                                        Idle
+                                    </span>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center justify-center gap-3">
+    <div class="flex items-center gap-1.5 px-3 py-1 rounded-full bg-tertiary-container/10 text-tertiary-container font-bold text-xs border border-tertiary-container/20">
+        <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">error</span>
+        4/5
+    </div>
+    <button class="flex items-center gap-1 bg-tertiary-container text-white px-2 py-1 rounded text-[9px] font-bold uppercase tracking-tighter hover:opacity-90 transition-opacity shadow-sm">
+        <span class="material-symbols-outlined text-[10px]">upload</span>
+        Renew
+    </button>
+</div>
+</td>
+<td class="px-8 py-5 text-right">
+<div class="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+    <button class="p-2 hover:bg-surface-container-high rounded text-on-surface/60 hover:text-primary-container">
+        <span class="material-symbols-outlined text-lg">edit</span>
+    </button>
+    <button class="p-2 hover:bg-surface-container-high rounded text-on-surface/60 hover:text-tertiary-container">
+        <span class="material-symbols-outlined text-lg">visibility</span>
+    </button>
+    <button class="p-2 hover:bg-surface-container-high rounded text-on-surface/60 hover:text-error transition-colors">
+        <span class="material-symbols-outlined text-lg">delete</span>
+    </button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+<div class="lg:col-span-2 bg-surface-container p-6 rounded-xl border border-outline-variant/10">
+<div class="flex items-center justify-between mb-6">
+<h4 class="font-headline font-bold text-lg">Fleet Maintenance Schedule</h4>
+<button class="text-xs font-bold uppercase tracking-widest text-primary-container hover:underline">View All Tasks</button>
+</div>
+<div class="space-y-4">
+<div class="flex items-center gap-4 p-4 bg-surface-container-low rounded-lg border-l-4 border-tertiary-container">
+<div class="flex-1">
+<p class="text-sm font-bold">Engine Service - MH 12 QW 4590</p>
+<p class="text-xs text-on-surface/40 mt-0.5">Scheduled for Tommorrow, 09:00 AM • Workshop A</p>
+</div>
+<span class="text-[10px] font-bold text-tertiary-container uppercase px-2 py-1 bg-tertiary-container/10 rounded">Upcoming</span>
+</div>
+<div class="flex items-center gap-4 p-4 bg-surface-container-low rounded-lg border-l-4 border-primary-container">
+<div class="flex-1">
+<p class="text-sm font-bold">Tyre Replacement - KA 01 ER 8821</p>
+<p class="text-xs text-on-surface/40 mt-0.5">Delayed by 2 days • Workshop B</p>
+</div>
+<span class="text-[10px] font-bold text-primary-container uppercase px-2 py-1 bg-primary-container/10 rounded">Delayed</span>
+</div>
+</div>
+</div>
+<div class="bg-surface-container p-6 rounded-xl border border-outline-variant/10">
+<h4 class="font-headline font-bold text-lg mb-6">Compliance Heatmap</h4>
+<div class="space-y-4">
+<div class="space-y-1">
+<div class="flex justify-between text-[10px] font-bold uppercase tracking-widest text-on-surface/40">
+<span>Insurance Renewals</span>
+<span>88% Valid</span>
+</div>
+<div class="h-1.5 w-full bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-green-500 w-[88%]"></div>
+</div>
+</div>
+<div class="space-y-1">
+<div class="flex justify-between text-[10px] font-bold uppercase tracking-widest text-on-surface/40">
+<span>Fitness Certificates</span>
+<span class="text-primary-container">62% Valid</span>
+</div>
+<div class="h-1.5 w-full bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-primary-container w-[62%]"></div>
+</div>
+</div>
+<div class="space-y-1">
+<div class="flex justify-between text-[10px] font-bold uppercase tracking-widest text-on-surface/40">
+<span>Permit Compliance</span>
+<span>94% Valid</span>
+</div>
+<div class="h-1.5 w-full bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-tertiary-container w-[94%]"></div>
+</div>
+</div>
+</div>
+<div class="mt-8 p-4 bg-primary-container/10 rounded-lg border border-primary-container/20">
+<p class="text-xs font-bold text-primary-container uppercase tracking-widest">Urgent Action Required</p>
+<p class="text-xs mt-2 text-on-surface/70 leading-relaxed">4 Fitness certificates and 2 State permits expire within the next 48 hours. Start the renewal workflow now.</p>
+<button class="mt-4 w-full py-2 bg-primary-container text-on-primary text-[10px] font-bold uppercase tracking-[0.2em] rounded">Process Renewals</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<nav class="md:hidden fixed bottom-0 left-0 right-0 bg-[#FFFFFF] border-t border-outline-variant/10 flex justify-between items-center px-6 py-3 z-50">
+<a class="flex flex-col items-center gap-1 text-[#0056D2]" href="#">
+<span class="material-symbols-outlined text-xl" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span class="text-[8px] font-bold uppercase tracking-widest">Home</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-on-surface opacity-50" href="#">
+<span class="material-symbols-outlined text-xl">local_shipping</span>
+<span class="text-[8px] font-bold uppercase tracking-widest">Assets</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-on-surface opacity-50" href="#">
+<span class="material-symbols-outlined text-xl">route</span>
+<span class="text-[8px] font-bold uppercase tracking-widest">Trips</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-on-surface opacity-50" href="#">
+<span class="material-symbols-outlined text-xl">person</span>
+<span class="text-[8px] font-bold uppercase tracking-widest">Drivers</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-on-surface opacity-50" href="#">
+<span class="material-symbols-outlined text-xl">more_horiz</span>
+<span class="text-[8px] font-bold uppercase tracking-widest">More</span>
+</a>
+</nav>
+<button class="fixed bottom-8 right-8 md:bottom-12 md:right-12 w-14 h-14 bg-primary-container text-white rounded-full shadow-2xl flex items-center justify-center hover:scale-110 active:scale-95 transition-all z-40 group">
+<span class="material-symbols-outlined text-3xl">add</span>
+<div class="absolute right-full mr-4 bg-on-surface px-3 py-1.5 rounded text-xs font-bold text-white whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none shadow-xl border border-outline-variant/10">
+            QUICK ADD TRIP
+        </div>
+</button>
+</body></html>
